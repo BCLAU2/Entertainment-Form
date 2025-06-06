@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entertainment Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #1e1e2f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating dots animation */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image: radial-gradient(#00ffe1 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: floatDots 30s linear infinite;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    @keyframes floatDots {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(-100px, -100px);
+      }
+    }
+
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      color: #fff;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      color: #ccc;
+      transition: 0.3s;
+      pointer-events: none;
+      background-color: transparent;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group select:focus + label,
+    .form-group textarea:focus + label {
+      top: -12px;
+      left: 10px;
+      background: #1e1e2f;
+      padding: 0 5px;
+      font-size: 12px;
+      color: #00ffe1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #00ffe1, #9c27b0);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Entertainment Form</h2>
+    <form>
+      <div class="form-group">
+        <input type="text" id="name" required placeholder=" " />
+        <label for="name">Full Name</label>
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="email" required placeholder=" " />
+        <label for="email">Email Address</label>
+      </div>
+
+      <div class="form-group">
+        <select id="event" required>
+          <option value="" disabled selected hidden></option>
+          <option>Concert</option>
+          <option>Movie</option>
+          <option>Festival</option>
+          <option>Comedy Show</option>
+        </select>
+        <label for="event">Select Event Type</label>
+      </div>
+
+      <div class="form-group">
+        <textarea id="message" rows="3" placeholder=" "></textarea>
+        <label for="message">Special Requests</label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
